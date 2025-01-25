@@ -1,0 +1,57 @@
+package simple;
+
+import java.sql.Connection;
+
+import java.sql.DriverManager;
+
+import java.sql.ResultSet;
+
+import java.sql.Statement;
+
+public class UpdateTableExample{
+
+	public static void main(String[] argd) {
+
+	 String url="jdbc:mysql://localhost:300/testdb1";
+
+	 String pass="1234";
+
+	 String user="root";
+
+	 String UpdateQuery="UPDATE testTable set marks=90 where id=3";
+
+	 
+
+	 try {
+
+		 Class.forName("com.mysql.cj.jdbc.Driver");
+
+		 Connection con=DriverManager.getConnection(url,user,pass);
+
+		 Statement st=con.createStatement();
+
+		  int rowsAffected=st.executeUpdate(UpdateQuery);
+
+		 if(rowsAffected>0) {
+
+			 System.out.println("The database update Successfully"+rowsAffected);
+
+			 }
+
+		 else { 
+
+			 System.out.println("no update");
+
+		 }
+
+	 }
+
+	 catch(Exception e) {
+
+		 e.printStackTrace();
+
+	 }
+
+	}
+
+}
